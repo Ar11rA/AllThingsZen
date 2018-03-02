@@ -27,7 +27,6 @@ public class GameInstaller : MonoInstaller {
 
 	private void ControllerBindings() {
 		Container.BindInterfacesAndSelfTo<HelloWorldController> ().AsSingle ();
-		Container.BindInterfacesAndSelfTo<GameController> ().AsSingle ();
-
+		Container.BindInterfacesAndSelfTo<GameController> ().AsSingle ();	
 	}
 }
