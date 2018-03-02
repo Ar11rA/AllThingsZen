@@ -8,7 +8,8 @@ public class GameInstaller : MonoInstaller {
 	public override void InstallBindings() {
 		PresenterSignals ();
 		ControllerSignals ();
-		Container.BindInterfacesAndSelfTo<HelloWorldController> ().AsSingle ();
+		ManagerBindings ();
+		ControllerBindings ();
 	}
 
 	private void PresenterSignals() {
@@ -17,5 +18,16 @@ public class GameInstaller : MonoInstaller {
 
 	private void ControllerSignals() {
 		Container.DeclareSignal<ButtonClickedSignal> ();
+		Container.DeclareSignal<ChangedSceneSignal> ();
+	}
+
+	private void ManagerBindings() {
+		Container.Bind<IGameManager> ().To<GameManager>().AsSingle ();
+	}
+
+	private void ControllerBindings() {
+		Container.BindInterfacesAndSelfTo<HelloWorldController> ().AsSingle ();
+		Container.BindInterfacesAndSelfTo<GameController> ().AsSingle ();
+
 	}
 }
